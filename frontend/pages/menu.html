@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Menu - QR Restaurant</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/menu.css" />
+</head>
+
+<body class="guest-menu-page">
+  <nav class="guest-nav">
+    <div class="guest-nav-inner">
+      <div class="guest-nav-left">
+        <i class="material-icons guest-nav-icon">restaurant_menu</i>
+        <span class="guest-nav-title">Our Menu</span>
+      </div>
+      <div class="guest-nav-right">
+        <span id="tableLabel" class="table-badge hide"></span>
+        <a id="cartNavBtn" href="#" class="cart-nav-btn hide" title="View Cart">
+          <i class="material-icons">shopping_cart</i>
+          <span id="cartBadge" class="cart-badge hide">0</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="guest-main">
+    <div id="menuStatus" class="menu-loading-state">
+      <div class="menu-loading-spinner"></div>
+      <p>Loading menu…</p>
+    </div>
+
+    <div id="menuError" class="hide">
+      <div class="menu-error-panel">
+        <i class="material-icons">error_outline</i>
+        <span></span>
+      </div>
+    </div>
+
+    <div id="menuContainer"></div>
+  </main>
+
+  <div id="floatingCartBtn" class="floating-cart-btn hide">
+    <a href="#" class="btn-floating btn-large waves-effect waves-light teal darken-2" id="openCartBtn">
+      <i class="material-icons">shopping_cart</i>
+    </a>
+    <span id="floatingCartCount" class="floating-cart-count hide">0</span>
+  </div>
+
+  <div id="cartOverlay" class="cart-overlay hide"></div>
+
+  <div id="cartDrawer" class="cart-drawer">
+    <div class="cart-drawer-header teal darken-2 white-text">
+      <span class="cart-drawer-title">Your Cart</span>
+      <a href="#" id="closeCartBtn" class="white-text cart-close-btn">
+        <i class="material-icons">close</i>
+      </a>
+    </div>
+
+    <div id="cartDrawerBody" class="cart-drawer-body">
+      <div id="cartEmpty" class="center-align grey-text cart-empty-msg">
+        <i class="material-icons large">shopping_cart</i>
+        <p>Your cart is empty</p>
+        <p class="grey-text text-lighten-1" style="font-size:0.85rem;">Add items from the menu to get started</p>
+      </div>
+
+      <div id="cartItemsList" class="hide"></div>
+    </div>
+
+    <div id="cartDrawerFooter" class="cart-drawer-footer hide">
+      <div class="cart-summary">
+        <div class="cart-summary-row">
+          <span>Subtotal</span>
+          <span id="cartSubtotal">$0.00</span>
+        </div>
+        <div class="cart-summary-row grey-text">
+          <span>Tax (10%)</span>
+          <span id="cartTax">$0.00</span>
+        </div>
+        <div class="cart-summary-row cart-total-row">
+          <span><strong>Total</strong></span>
+          <span id="cartTotal"><strong>$0.00</strong></span>
+        </div>
+      </div>
+      <button id="placeOrderBtn" class="btn waves-effect waves-light teal darken-2 btn-place-order">
+        <i class="material-icons left">check_circle</i>Place Order
+      </button>
+    </div>
+  </div>
+
+  <div id="orderConfirmModal" class="modal order-confirm-modal">
+    <div class="modal-content center-align">
+      <div class="order-success-icon">
+        <i class="material-icons teal-text text-darken-2">check_circle</i>
+      </div>
+      <h5 class="teal-text text-darken-2">Order Placed!</h5>
+      <p class="grey-text text-darken-1">Your order has been sent to the kitchen.</p>
+
+      <div id="orderSummaryBox" class="order-summary-box"></div>
+
+      <p class="grey-text" style="font-size: 0.85rem; margin-top: 12px;">Order ID: <span id="confirmOrderId" class="teal-text text-darken-2" style="font-weight:600;word-break:break-all;"></span></p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close btn-flat teal-text text-darken-2 waves-effect">Done</a>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/config.js"></script>
+  <script src="/js/menu.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profile & Settings - QR Restaurant</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/owner-profile.css" />
+</head>
+<body class="dashboard-page owner-page">
+
+  <nav class="teal darken-2">
+    <div class="nav-wrapper container">
+      <a href="owner-dashboard.html" class="brand-logo">Owner</a>
+      <ul class="right">
+        <li><a href="owner-dashboard.html"><i class="material-icons left">dashboard</i>Dashboard</a></li>
+        <li><a href="owner-qr-codes.html"><i class="material-icons left">qr_code_2</i>QR Codes</a></li>
+        <li><a href="#" id="logoutBtn"><i class="material-icons left">logout</i>Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container section">
+    <div class="profile-page-header">
+      <a href="owner-dashboard.html" class="btn-flat teal-text text-darken-2 profile-back-btn">
+        <i class="material-icons left">arrow_back</i>Back to Dashboard
+      </a>
+      <h4 class="profile-page-title">Profile &amp; Settings</h4>
+      <p class="grey-text text-darken-1" id="profileSubtitle">Loading…</p>
+    </div>
+
+    <div class="card profile-banner-card">
+      <div class="card-content profile-banner-content">
+        <div class="profile-avatar" id="profileAvatar">?</div>
+        <div class="profile-banner-info">
+          <h5 id="bannerName">–</h5>
+          <p class="grey-text" id="bannerEmail">–</p>
+          <span class="badge-status badge-approved" id="bannerStatus">Approved</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12 l6">
+        <div class="card profile-section-card">
+          <div class="card-content">
+            <div class="profile-section-header">
+              <i class="material-icons teal-text text-darken-2">person</i>
+              <span class="card-title">Personal Information</span>
+            </div>
+
+            <div id="profileInfoView" class="profile-field-view">
+              <div class="profile-field-row">
+                <span class="profile-field-label">Full Name</span>
+                <span class="profile-field-value" id="viewName">–</span>
+              </div>
+              <div class="profile-field-row">
+                <span class="profile-field-label">Email Address</span>
+                <span class="profile-field-value" id="viewEmail">–</span>
+              </div>
+              <div class="profile-field-row">
+                <span class="profile-field-label">Role</span>
+                <span class="profile-field-value">Restaurant Owner</span>
+              </div>
+            </div>
+
+            <form id="profileInfoForm" class="hide">
+              <div class="input-field">
+                <input id="profileName" type="text" required />
+                <label for="profileName">Full Name</label>
+              </div>
+              <div class="input-field">
+                <input id="profileEmail" type="email" required />
+                <label for="profileEmail">Email Address</label>
+              </div>
+              <p id="profileInfoError" class="red-text hide"></p>
+            </form>
+          </div>
+          <div class="card-action profile-card-action">
+            <button id="editInfoBtn" class="btn-flat teal-text text-darken-2 waves-effect">
+              <i class="material-icons left">edit</i>Edit
+            </button>
+            <div id="profileInfoActions" class="hide">
+              <button id="cancelInfoBtn" class="btn-flat grey-text waves-effect">Cancel</button>
+              <button id="saveInfoBtn" class="btn teal darken-2 waves-effect waves-light">
+                <i class="material-icons left">save</i>Save
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card profile-section-card">
+          <div class="card-content">
+            <div class="profile-section-header">
+              <i class="material-icons teal-text text-darken-2">lock</i>
+              <span class="card-title">Change Password</span>
+            </div>
+
+            <form id="passwordForm">
+              <div class="input-field">
+                <input id="currentPassword" type="password" autocomplete="current-password" required />
+                <label for="currentPassword">Current Password</label>
+              </div>
+              <div class="input-field">
+                <input id="newPassword" type="password" autocomplete="new-password" required minlength="6" />
+                <label for="newPassword">New Password</label>
+              </div>
+              <div class="input-field">
+                <input id="confirmPassword" type="password" autocomplete="new-password" required minlength="6" />
+                <label for="confirmPassword">Confirm New Password</label>
+              </div>
+              <p id="passwordError" class="red-text hide"></p>
+            </form>
+          </div>
+          <div class="card-action profile-card-action">
+            <button id="savePasswordBtn" class="btn teal darken-2 waves-effect waves-light">
+              <i class="material-icons left">lock_reset</i>Update Password
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col s12 l6">
+        <div class="card profile-section-card">
+          <div class="card-content">
+            <div class="profile-section-header">
+              <i class="material-icons teal-text text-darken-2">restaurant</i>
+              <span class="card-title">Restaurant Information</span>
+            </div>
+
+            <div id="restaurantInfoView" class="profile-field-view">
+              <div class="profile-field-row">
+                <span class="profile-field-label">Restaurant Name</span>
+                <span class="profile-field-value" id="viewRestaurantName">–</span>
+              </div>
+              <div class="profile-field-row">
+                <span class="profile-field-label">Address</span>
+                <span class="profile-field-value" id="viewRestaurantAddress">–</span>
+              </div>
+              <div class="profile-field-row">
+                <span class="profile-field-label">Phone</span>
+                <span class="profile-field-value" id="viewRestaurantPhone">–</span>
+              </div>
+              <div class="profile-field-row">
+                <span class="profile-field-label">Email</span>
+                <span class="profile-field-value" id="viewRestaurantEmail">–</span>
+              </div>
+              <div class="profile-field-row">
+                <span class="profile-field-label">Total Tables</span>
+                <span class="profile-field-value" id="viewTotalTables">–</span>
+              </div>
+            </div>
+
+            <form id="restaurantInfoForm" class="hide">
+              <div class="input-field">
+                <input id="restaurantName" type="text" required />
+                <label for="restaurantName">Restaurant Name</label>
+              </div>
+              <div class="input-field">
+                <input id="restaurantAddress" type="text" required />
+                <label for="restaurantAddress">Address</label>
+              </div>
+              <div class="input-field">
+                <input id="restaurantPhone" type="text" />
+                <label for="restaurantPhone">Phone (optional)</label>
+              </div>
+              <div class="input-field">
+                <input id="restaurantEmail" type="email" />
+                <label for="restaurantEmail">Email (optional)</label>
+              </div>
+              <p id="restaurantInfoError" class="red-text hide"></p>
+            </form>
+          </div>
+          <div class="card-action profile-card-action">
+            <button id="editRestaurantBtn" class="btn-flat teal-text text-darken-2 waves-effect">
+              <i class="material-icons left">edit</i>Edit
+            </button>
+            <div id="restaurantInfoActions" class="hide">
+              <button id="cancelRestaurantBtn" class="btn-flat grey-text waves-effect">Cancel</button>
+              <button id="saveRestaurantBtn" class="btn teal darken-2 waves-effect waves-light">
+                <i class="material-icons left">save</i>Save
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card profile-section-card profile-danger-card">
+          <div class="card-content">
+            <div class="profile-section-header">
+              <i class="material-icons red-text text-darken-1">warning</i>
+              <span class="card-title red-text text-darken-1">Account</span>
+            </div>
+            <p class="grey-text text-darken-1" style="font-size:0.9rem;">
+              Logging out will clear your session. You will need to sign in again.
+            </p>
+          </div>
+          <div class="card-action">
+            <button id="logoutBtnCard" class="btn red darken-1 waves-effect waves-light">
+              <i class="material-icons left">logout</i>Sign Out
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="../js/config.js"></script>
+  <script src="../js/owner-profile.js"></script>
+</body>
+</html>

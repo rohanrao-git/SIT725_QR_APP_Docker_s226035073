@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Owner Signup - QR Restaurant Menu System</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+</head>
+
+<body class="auth-page">
+    <div class="container">
+        <div class="row auth-wrapper">
+            <div class="col s12 m8 l5 offset-m2 offset-l3">
+                <div class="card z-depth-3 auth-card">
+                    <div class="card-content">
+                        <h4 class="center-align">Owner Signup</h4>
+                        <p class="center-align grey-text text-darken-1">
+                            Submit your restaurant access request
+                        </p>
+
+                        <form id="ownerSignupForm">
+                            <div class="input-field">
+                                <input id="name" type="text" required>
+                                <label for="name">Owner Name</label>
+                            </div>
+
+                            <div class="input-field">
+                                <input id="email" type="email" required>
+                                <label for="email">Owner Email</label>
+                            </div>
+
+                            <div class="input-field">
+                                <input id="password" type="password" required>
+                                <label for="password">Password</label>
+                            </div>
+
+                            <div class="input-field">
+                                <input id="pendingRestaurantName" type="text" required>
+                                <label for="pendingRestaurantName">Restaurant Name</label>
+                            </div>
+
+                            <div class="input-field">
+                                <input id="pendingRestaurantAddress" type="text" required>
+                                <label for="pendingRestaurantAddress">Restaurant Address</label>
+                            </div>
+
+                            <div class="input-field">
+                                <input id="pendingRestaurantPhone" type="text" required>
+                                <label for="pendingRestaurantPhone">Restaurant Phone</label>
+                            </div>
+
+                            <div class="input-field">
+                                <input id="pendingRestaurantEmail" type="email" required>
+                                <label for="pendingRestaurantEmail">Restaurant Email</label>
+                            </div>
+
+                            <button type="submit" class="btn teal darken-2 full-width-btn">
+                                Submit Request
+                            </button>
+                        </form>
+
+                        <div id="signupMessage" class="status-message center-align"></div>
+
+                        <p class="center-align">
+                            Already registered?
+                            <a href="/pages/login.html">Login here</a>
+                        </p>
+
+                        <div id="signupMessage" class="status-message center-align"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="../js/config.js"></script>
+    <script src="../js/auth.js"></script>
+</body>
+
+</html>

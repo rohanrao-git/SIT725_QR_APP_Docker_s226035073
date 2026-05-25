@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Analytics - QR Restaurant Menu System</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body class="dashboard-page owner-page">
+  <nav class="teal darken-2">
+    <div class="nav-wrapper container">
+      <a href="owner-dashboard.html" class="brand-logo">Owner</a>
+      <ul class="right">
+        <li><a href="owner-dashboard.html">Dashboard</a></li>
+        <li><a href="#" id="logoutBtn">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container section">
+    <div class="owner-toolbar">
+      <div>
+        <h4>Analytics</h4>
+        <p class="grey-text text-darken-1">View restaurant order and sales insights.</p>
+      </div>
+
+      <a href="owner-dashboard.html" class="btn grey darken-1">
+        <i class="material-icons left">arrow_back</i>Back
+      </a>
+    </div>
+
+    <div class="card full-width-card analytics-card">
+      <div class="card-content">
+        <div class="analytics-header">
+          <span class="card-title">Restaurant Analytics</span>
+
+          <div class="analytics-filters">
+            <div class="input-field date-filter">
+              <input id="analyticsFromDate" type="date" />
+              <label for="analyticsFromDate" class="active">From</label>
+            </div>
+
+            <div class="input-field date-filter">
+              <input id="analyticsToDate" type="date" />
+              <label for="analyticsToDate" class="active">To</label>
+            </div>
+
+            <button class="btn teal darken-2" id="refreshAnalyticsBtn">
+              <i class="material-icons left">refresh</i>Refresh
+            </button>
+          </div>
+        </div>
+
+        <div id="analyticsMessage" class="center-align grey-text" style="margin: 15px 0;">
+          Loading analytics...
+        </div>
+
+        <div class="analytics-stats row">
+          <div class="col s12 m6 l3">
+            <div class="analytics-stat-card">
+              <div class="stat-label">Total Orders</div>
+              <div class="stat-value" id="analyticsTotalOrders">-</div>
+            </div>
+          </div>
+
+          <div class="col s12 m6 l3">
+            <div class="analytics-stat-card">
+              <div class="stat-label">Total Revenue</div>
+              <div class="stat-value" id="analyticsTotalRevenue">-</div>
+            </div>
+          </div>
+
+          <div class="col s12 m6 l3">
+            <div class="analytics-stat-card">
+              <div class="stat-label">Most Ordered Item</div>
+              <div class="stat-value" id="analyticsTopItem">-</div>
+            </div>
+          </div>
+
+          <div class="col s12 m6 l3">
+            <div class="analytics-stat-card">
+              <div class="stat-label">Busiest Table</div>
+              <div class="stat-value" id="analyticsBusiestTable">-</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row analytics-detail-row">
+          <div class="col s12 l6">
+            <div class="card analytics-chart-card">
+              <div class="card-content">
+                <span class="card-title">Food Item Quantity Ordered</span>
+                <p class="grey-text">Total quantity of each food item ordered in the restaurant.</p>
+
+                <div id="foodItemsNoData" class="center-align grey-text" style="display:none; margin-top: 25px;">
+                  No food item quantity data available
+                </div>
+
+                <div class="chart-box">
+                  <canvas id="foodItemsPieChart"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col s12 l6">
+            <div class="card analytics-chart-card">
+              <div class="card-content">
+                <span class="card-title">Peak Hours By Day</span>
+                <p class="grey-text">Busiest ordering hours for each day.</p>
+
+                <div class="table-responsive">
+                  <table class="striped analytics-table">
+                    <thead>
+                      <tr>
+                        <th>Day</th>
+                        <th>Top Hours</th>
+                        <th>Confidence</th>
+                      </tr>
+                    </thead>
+
+                    <tbody id="analyticsPeakHoursTable">
+                      <tr>
+                        <td colspan="3" class="center-align">Loading peak hours...</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="../js/config.js"></script>
+  <script src="../js/analytics.js"></script>
+</body>
+</html>

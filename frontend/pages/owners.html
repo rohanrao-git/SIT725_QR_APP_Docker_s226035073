@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Owners - Admin</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body class="dashboard-page">
+
+  <ul id="manageDropdown" class="dropdown-content">
+    <li><a href="owners.html">Manage Owners</a></li>
+  </ul>
+
+  <ul id="adminDropdown" class="dropdown-content">
+    <li><a href="pending_owners.html">Pending Owners</a></li>
+    <li><a href="restaurants.html">Restaurants</a></li>
+    <li class="divider" tabindex="-1"></li>
+    <li><a href="#!" id="logoutDropdownBtn">Logout</a></li>
+  </ul>
+
+  <nav class="teal darken-2">
+    <div class="nav-wrapper container">
+      <a href="admin-dashboard.html" class="brand-logo">Admin</a>
+
+      <ul class="right hide-on-med-and-down">
+        <li><a href="admin-dashboard.html">Dashboard</a></li>
+
+        <li>
+          <a class="dropdown-trigger" href="#!" data-target="manageDropdown">
+            Manage
+            <i class="material-icons right">arrow_drop_down</i>
+          </a>
+        </li>
+
+        <li>
+          <a class="dropdown-trigger" href="#!" data-target="adminDropdown">
+            Admin
+            <i class="material-icons right">arrow_drop_down</i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container section">
+    <h4>Owner Management</h4>
+
+    <div class="row">
+    <div class="input-field col s12">
+      <input id="ownerSearch" type="text" placeholder="Search owners by name, email, status, or restaurant">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s12 m4">
+      <div class="card dashboard-card">
+        <div class="card-content center-align">
+          <span class="card-title">Owners</span>
+          <h5 id="ownerCount">0</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s12">
+      <div class="card">
+        <div class="card-content">
+          <span class="card-title">All Owners</span>
+
+          <div class="table-responsive">
+            <table class="striped highlight admin-data-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Status</th>
+                  <th>Restaurant</th>
+                  <th>Remove Access</th>
+                </tr>
+              </thead>
+              <tbody id="ownersTable">
+                <tr>
+                  <td colspan="5" class="center-align">Loading owners...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="../js/config.js"></script>
+  <script src="../js/admin.js"></script>
+</body>
+
+</html>

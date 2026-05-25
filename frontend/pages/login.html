@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - QR Restaurant Menu System</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+
+<body class="auth-page">
+
+  <div class="container">
+    <div class="row auth-wrapper">
+      <div class="col s12 m8 l5 offset-m2 offset-l3">
+        <div class="card z-depth-3 auth-card">
+          <div class="card-content">
+            <h4 class="center-align">Login</h4>
+            <p class="center-align grey-text text-darken-1">
+              Super Admin / Restaurant Owner
+            </p>
+
+            <form id="loginForm">
+              <div class="input-field">
+                <input id="email" type="email" required />
+                <label for="email">Email</label>
+              </div>
+
+              <div class="input-field">
+                <input id="password" type="password" required />
+                <label for="password">Password</label>
+              </div>
+
+              <div class="center-align">
+                <button type="submit" class="btn waves-effect waves-light teal darken-2 full-width-btn">
+                  Login
+                </button>
+              </div>
+            </form>
+            <p class="center-align">
+              Sign Up As a Restaurant Owner?
+              <a href="/pages/owner_signup.html">Sign Up</a>
+            </p>
+
+            <div id="loginMessage" class="status-message center-align"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="../js/config.js"></script>
+  <script src="../js/auth.js"></script>
+</body>
+
+</html>

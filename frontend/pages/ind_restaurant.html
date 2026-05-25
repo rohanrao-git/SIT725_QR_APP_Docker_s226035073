@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Restaurant Tables - Admin</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body class="dashboard-page">
+
+    <ul id="manageDropdown" class="dropdown-content">
+        <li><a href="owners.html">Manage Owners</a></li>
+    </ul>
+
+    <ul id="adminDropdown" class="dropdown-content">
+        <li><a href="pending_owners.html">Owners</a></li>
+        <li><a href="restaurants.html">Restaurants</a></li>
+        <li class="divider" tabindex="-1"></li>
+        <li><a href="#!" id="logoutDropdownBtn">Logout</a></li>
+    </ul>
+
+    <nav class="teal darken-2">
+        <div class="nav-wrapper container">
+            <a href="admin-dashboard.html" class="brand-logo">Admin</a>
+
+            <ul class="right hide-on-med-and-down">
+                <li><a href="admin-dashboard.html">Dashboard</a></li>
+
+                <li>
+                    <a class="dropdown-trigger" href="#!" data-target="manageDropdown">
+                        Manage
+                        <i class="material-icons right">arrow_drop_down</i>
+                    </a>
+                </li>
+
+                <li>
+                    <a class="dropdown-trigger" href="#!" data-target="adminDropdown">
+                        Admin
+                        <i class="material-icons right">arrow_drop_down</i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container section">
+
+        <div class="restaurant-top-actions">
+            <a href="restaurants.html" class="btn-flat">
+                <i class="material-icons left">arrow_back</i>Back to Restaurants
+            </a>
+            <button id="openTablesModalBtn" type="button" class="btn teal darken-2">
+                <i class="material-icons left">table_restaurant</i>Set Tables
+            </button>
+        </div>
+
+        <h4 id="restaurantDetailsTitle">Restaurant Tables</h4>
+        <p class="grey-text text-darken-1">Set the number of tables to generate QR codes for customer ordering.</p>
+        <div class="row" id="restaurantTablesContainer">
+            <div class="col s12 center-align">
+                Loading tables...
+            </div>
+        </div>
+
+    </div>
+
+    <div id="tablesModal" class="modal">
+        <div class="modal-content">
+            <h5>Set Restaurant Tables</h5>
+            <p class="grey-text text-darken-1">
+                Restaurant: <strong id="selectedRestaurantName">-</strong>
+            </p>
+            <input type="hidden" id="selectedRestaurantId" />
+            <div class="input-field">
+                <input id="totalTablesInput" type="number" min="1" step="1" required />
+                <label for="totalTablesInput">Number of tables</label>
+            </div>
+            <p class="grey-text" style="font-size: 0.9rem;">
+                This replaces existing tables and regenerates QR codes for tables 1 through N.
+            </p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close btn-flat">Cancel</a>
+            <button id="saveTablesBtn" type="button" class="btn teal darken-2">Save Tables</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="../js/config.js"></script>
+    <script src="../js/admin.js"></script>
+</body>
+
+</html>

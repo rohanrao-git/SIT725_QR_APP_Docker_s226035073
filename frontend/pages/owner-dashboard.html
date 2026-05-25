@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Owner Dashboard - QR Restaurant Menu System</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="dashboard-page owner-page">
+  <nav class="teal darken-2">
+    <div class="nav-wrapper container">
+      <a href="owner-dashboard.html" class="brand-logo">Owner</a>
+      <ul class="right">
+        <li><a href="owner-qr-codes.html"><i class="material-icons left">qr_code_2</i>QR Codes</a></li>
+        <li><a href="owner-profile.html"><i class="material-icons left">manage_accounts</i>Profile</a></li>
+        <li><a href="#" id="logoutBtn"><i class="material-icons left">logout</i>Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container section">
+    <h4>Owner Dashboard</h4>
+    <p class="grey-text text-darken-1" id="ownerWelcome">Loading owner profile...</p>
+
+    <div class="row">
+      <div class="col s12 m4">
+        <div class="card dashboard-card">
+          <div class="card-content center-align">
+            <span class="card-title">Menu Items</span>
+            <h5 id="menuCount">0</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 m4">
+        <div class="card dashboard-card">
+          <div class="card-content center-align">
+            <span class="card-title">Available</span>
+            <h5 id="availableCount">0</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 m4">
+        <div class="card dashboard-card">
+          <div class="card-content center-align">
+            <span class="card-title">Unavailable</span>
+            <h5 id="unavailableCount">0</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="right-align" style="margin-bottom: 20px;">
+      <a href="owner-qr-codes.html" class="btn teal darken-2">
+        <i class="material-icons left">qr_code_2</i>View QR Codes
+      </a>
+      <a href="analytics.html" class="btn teal darken-2">
+        <i class="material-icons left">analytics</i>View Analytics
+      </a>
+    </div>
+
+    <div class="card full-width-card">
+      <div class="card-content">
+        <div class="owner-toolbar">
+          <span class="card-title">Manage Food Items</span>
+          <a class="btn teal darken-2 modal-trigger" href="#menuItemModal" id="addItemBtn">
+            <i class="material-icons left">add</i>Add Item
+          </a>
+        </div>
+
+        <div class="input-field">
+          <input id="ownerMenuSearch" type="text" placeholder="Search by item name, category, or type">
+        </div>
+
+        <div class="table-responsive">
+          <table class="striped highlight admin-data-table owner-menu-table">
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Item</th>
+                <th>Category</th>
+                <th>Type</th>
+                <th>Price</th>
+                <th>Availability</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="ownerMenuTable">
+              <tr>
+                <td colspan="7" class="center-align">Loading menu items...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="card full-width-card">
+      <div class="card-content">
+        <span class="card-title">Menu By Category</span>
+        <div id="menuCategorySections" class="row"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="menuItemModal" class="modal">
+    <div class="modal-content">
+      <h5 id="menuModalHeading">Add Menu Item</h5>
+      <form id="menuItemForm">
+        <input type="hidden" id="menuItemId" />
+
+        <div class="input-field">
+          <input id="itemName" type="text" required />
+          <label for="itemName">Item Name</label>
+        </div>
+
+        <div class="input-field">
+          <select id="itemCategory" required>
+            <option value="" disabled selected>Choose category</option>
+            <option value="Appetizers">Appetizers</option>
+            <option value="Mains">Mains</option>
+            <option value="Desserts">Desserts</option>
+            <option value="Sides">Sides</option>
+            <option value="Beverages">Beverages</option>
+          </select>
+          <label>Category</label>
+        </div>
+
+        <div class="input-field" id="dietaryFieldWrap">
+          <select id="itemDietaryType" required>
+            <option value="" disabled selected>Choose food type</option>
+            <option value="veg">Veg</option>
+            <option value="non_veg">Non-Veg</option>
+          </select>
+          <label>Veg / Non-Veg</label>
+        </div>
+
+        <div class="input-field">
+          <textarea id="itemDescription" class="materialize-textarea" required></textarea>
+          <label for="itemDescription">Description</label>
+        </div>
+
+        <div class="input-field">
+          <input id="itemPrice" type="number" min="0" step="0.01" required />
+          <label for="itemPrice">Price</label>
+        </div>
+
+        <input id="itemImage" type="hidden" />
+        <input id="itemImageFileId" type="hidden" />
+
+        <div class="file-field input-field">
+          <div class="btn teal darken-2">
+            <span>Image</span>
+            <input id="itemImageFile" type="file" accept="image/*" />
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text" placeholder="Upload item image (optional)" />
+          </div>
+        </div>
+
+        <div id="itemImagePreviewWrap" class="owner-image-preview-wrap hide">
+          <img id="itemImagePreview" class="owner-image-preview" alt="Item preview">
+        </div>
+
+        <p>
+          <label>
+            <input id="itemAvailable" type="checkbox" checked />
+            <span>Available</span>
+          </label>
+        </p>
+      </form>
+    </div>
+
+    <div class="modal-footer">
+      <a href="#!" class="modal-close btn-flat">Cancel</a>
+      <button type="submit" class="btn teal darken-2" form="menuItemForm">Save Item</button>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="../js/config.js"></script>
+  <script src="../js/owner.js"></script>
+</body>
+</html>
