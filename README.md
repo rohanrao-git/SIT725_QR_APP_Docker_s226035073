@@ -39,6 +39,79 @@ The backend currently supports:
 - `frontend/`: static pages and UI components
 - `docs/`: SRS and team documentation
 
+## Docker Deployment (HD Task)
+
+The full app is containerised with:
+- `app` service: Node.js backend + static frontend serving
+- `mongodb` service: MongoDB database
+
+### Prerequisites
+
+- Docker Desktop (or Docker Engine + Docker Compose plugin)
+
+### 1. Configure environment
+
+Create the runtime environment file:
+
+```bash
+cp backend/.env.example backend/.env
+```
+
+Update `backend/.env` as needed:
+- `JWT_SECRET`: set your own strong secret
+- `STUDENT_NAME`, `STUDENT_ID`: must match your identity
+
+### 2. Build and start
+
+From the repository root:
+
+```bash
+docker compose up --build -d
+```
+
+### 3. Seed database data (required to demonstrate DB-backed features)
+
+```bash
+docker compose exec app npm run seed:admin
+```
+
+This seeds:
+- super admin account: `admin@system.com / admin123`
+- owner account: `owner@example.com / owner123`
+- restaurant + QR-linked tables
+
+### 4. Access the application
+
+- App URL: `http://localhost:5001/`
+- Student endpoint: `http://localhost:5001/api/student`
+
+Expected `/api/student` response:
+
+```json
+{
+  "name": "Rohan Rao",
+  "studentId": "s226035073"
+}
+```
+
+### 5. Stop services
+
+```bash
+docker compose down
+```
+
+To also remove database data volume:
+
+```bash
+docker compose down -v
+```
+
+### Sensitive configuration note
+
+- `backend/.env` is intentionally not committed.
+- Marker setup values are provided via `backend/.env.example`.
+- If you change any private values (for example, `JWT_SECRET`), provide them in your OnTrack submission notes.
+
 ## Local Setup
 
 1. Clone and open project:
@@ -455,4 +528,3 @@ QA developer:
 - Owner can upload an image and see it on owner/client menus
 - Admin can set tables and see QR values
 - Guest can open a QR menu with `?table=1`, add items to cart, and place an order
-
