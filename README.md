@@ -89,7 +89,7 @@ Expected `/api/student` response:
 
 ```json
 {
-  "name": "Rohan Rao",
+  "name": "Aroor Rohan Rao",
   "studentId": "s226035073"
 }
 ```

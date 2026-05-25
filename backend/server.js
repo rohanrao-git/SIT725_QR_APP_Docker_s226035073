@@ -36,7 +36,7 @@ app.get('/menu/:restaurantId', (req, res) => {
 
 app.get('/api/student', (req, res) => {
   res.json({
-    name: process.env.STUDENT_NAME || 'Rohan Rao',
+    name: process.env.STUDENT_NAME || 'Aroor Rohan Rao',
     studentId: process.env.STUDENT_ID || 's226035073',
   });
 });
